@@ -1,0 +1,151 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Salary Prediction</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style type ="text/css" >
+   .footer{
+       position: fixed;
+       text-align: center;
+       bottom: 25px;
+       width: 100%;
+       font-weight: bold;
+   	}
+	</style>
+	</head>
+	<body>
+	
+		<center>
+		<h1 >Salary Prediction</h1>
+			<p>Our goal here is to predict if the salary whether less than 50K or greater than 50K ?</p>
+		<br>
+
+
+		<div>
+		<form action="/predict" method="POST" class="form-horizontal">
+		<div class="form-group">
+		
+
+			<div class="form-group row">	
+				<label class="col-sm-2 control-label" for="relationship">Relationship:</label>
+				<div class="col-sm-3">
+					<select class="form-control" aria-label="Default select example" name="relationship" id="relationship" required="required">
+						 <option value="0">Husband</option>
+						 <option value="1">Not-in-family</option>
+						 <option value="2">Other-relative</option>
+						 <option value="3">Own-child</option>
+						 <option value="4">Unmarried</option>
+						 <option value="5">Wife</option>
+					</select>
+				</div>
+				
+				<label class="col-sm-2 control-label" for="Sex">Sex:</label>
+				<div class="col-sm-3">
+					<select class="form-control" aria-label="Default select example" name="Sex" id="Sex" required="required">
+						<option value="0">Male</option>
+						<option value="1">Female</option>
+					</select>
+				</div>
+			</div><br><br>
+
+			<div class="form-group row">
+				<label class="col-sm-2 control-label" for="work_class">Workclass:</label>
+				<div class="col-sm-3">
+					<select class="form-control" aria-label="Default select example" name="work_class" id="work_class" required="required">
+						<option value="0">Federal-gov</option>
+						<option value="1">Local-gov</option>
+						<option value="2">Never-worked</option>
+						<option value="3">Private</option>
+						<option value="4">Self-emp-inc</option>
+						<option value="5">Self-emp-not-inc</option>
+						<option value="6">State-gov</option>
+						<option value="7">Without-pay</option>
+					</select>
+				</div>
+					
+				<label class="col-sm-2 control-label" for="education">Education:</label>
+				<div class="col-sm-3">
+					<select class="form-control" aria-label="Default select example" name="education" id="education" required="required">
+						<option value="0">10th</option>
+						<option value="1">11th</option>
+						<option value="2">12th</option>
+						<option value="3">1st-4th</option>
+						<option value="4">5th-6th</option>
+						<option value="5">7th-8th</option>
+						<option value="6">9th</option>
+						<option value="7">Assoc-acdm</option>
+						<option value="8">Bachelors</option>
+						<option value="9">Doctorate</option>
+						<option value="10">HS-grad</option>
+						<option value="11">Masters</option>
+						<option value="12">Preschool</option>
+						<option value="13">Prof-school</option>
+						<option value="14">Some-college</option>
+					</select>
+				</div>
+			</div><br><br>
+
+			<div class="form-group row">
+				 <label class="col-sm-2 control-label" for="marital-status">Marital Status:</label>
+				 <div class="col-sm-3">
+					<select class="form-control" aria-label="Default select example" name="marital-status" id="marital-status" required="required">
+						<option value="0">Divorced</option>
+						<option value="1">Married-AF-spouse</option>
+						<option value="2">Married-civ-spouse</option>
+						<option value="3">Married-spouse-absent</option>
+						<option value="4">Never-married</option>
+						<option value="5">Separated</option>
+						<option value="6">Widowed</option>
+					</select>
+				  </div>
+				
+				 <label class="col-sm-2 control-label" for="occupation">Occupation:</label>
+					 <div class="col-sm-3">
+						<select class="form-control" aria-label="Default select example" name="occupation" id="occupation" required="required">
+							<option value="0">Adm-clerical</option>
+							<option value="1">Armed-Forces</option>
+							<option value="2">Craft-repair</option>
+							<option value="3">Exec-managerial</option>
+							<option value="4">Farming-fishing</option>
+							<option value="5">Handlers-cleaners</option>
+							<option value="6">Machine-op-inspct</option>
+							<option value="7">Other-service</option>
+							<option value="8">Priv-house-serv</option>
+							<option value="9">Prof-specialty</option>
+							<option value="10">Protective-serv</option>
+							<option value="11">Sales</option>
+							<option value="12">Tech-support</option>
+							<option value="13">Transport-moving</option>
+						</select>
+					</div>
+			</div><br><br>
+
+			<div class="form-group row">
+				<label class="col-sm-2 control-label" for="capital-gain">Capital gain:</label>
+				<div class="col-sm-3"><input class="form-control" aria-label="Default select example" 	type="text" id="capital-gain" name="capital-gain"></div>
+
+				<label class="col-sm-2 control-label" for="capital-loss">Capital loss:</label>
+				<div class="col-sm-3"><input class="form-control" aria-label="Default select example" 	type="text" id="capital-loss" name="capital-loss"></div>
+			</div><br><br>
+
+			<div class="form-group row">
+				<label class="col-sm-2 control-label" for="age">Age:</label>
+				<div class="col-sm-3"><input class="form-control" aria-label="Default select example" type="text" id="age" name="age"></div>
+			</div><br><br>
+
+			<input class="btn btn-primary" type="submit" value="Search">
+			<br><br>
+		</div>
+		</form>
+		</div><h3>{{ prediction_text  }}</h3>
+		<br>
+        <br>
+		<div class="footer">© Copyright 2022, created by Arun Mozhi Devan with love ❤️</div>
+		</center>
+	</body>
+</html>
+
